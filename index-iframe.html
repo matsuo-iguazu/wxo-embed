@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>iframe test</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    html,body { height:100%; margin:0; }
+    .wrap { height:100vh; display:flex; flex-direction:column; }
+    header { background:#0f62fe; color:#fff; padding:10px 14px; font-family: sans-serif; }
+    .frame-wrap { flex:1; }
+    iframe { width:100%; height:100%; border:0; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>iframe test — Orchestrate embed</header>
+    <div class="frame-wrap">
+      <!-- ここを自分の URL に置き換えてください -->
+      <!-- 例: src="https://<username>.github.io/wxo-embed/index.html" -->
+      <!-- あるいはローカルで同じフォルダにある index.html を読み込むなら src="index.html" -->
+      <iframe id="testFrame" src="https://<username>.github.io/wxo-embed/index.html" allowfullscreen></iframe>
+    </div>
+  </div>
+  <script>
+    // 簡易チェック：iframeが読み込めたかどうか（同一オリジンでないと内部にはアクセスできません）
+    const f = document.getElementById('testFrame');
+    f.addEventListener('load', () => {
+      console.log('iframe loaded, src=', f.src);
+    });
+    f.addEventListener('error', () => {
+      console.warn('iframe load error');
+    });
+  </script>
+</body>
+</html>
